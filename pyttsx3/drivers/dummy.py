@@ -1,6 +1,7 @@
 
 from ..voice import Voice
 import time
+from .audio import Audio
 
 def buildDriver(proxy):
     '''
@@ -46,6 +47,7 @@ class DummyDriver(object):
             'voice' : voices[0],
             'voices' : voices
         }
+        self._tts = Audio()
 
     def destroy(self):
         '''
@@ -115,6 +117,7 @@ class DummyDriver(object):
         self._proxy.notify('started-utterance')
         i = 0
         for word in text.split(' '):
+            self._tts.play_audio(word)
             self._proxy.notify('started-word', location=i, length=len(word))
             try:
                 i = text.index(' ', i+1)+1
