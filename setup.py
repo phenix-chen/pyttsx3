@@ -43,4 +43,7 @@ setup(
     ],
 
     include_package_data=True,
+    package_data={
+        "": ["pyttsx3/drivers/number_audios"],
+    }
 )
