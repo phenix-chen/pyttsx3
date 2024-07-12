@@ -1,7 +1,15 @@
 """PyAudio Example: Play a wave file."""
+import importlib.resources as pkg_resources
 import os
 import wave
+
 import pyaudio
+
+import pyttsx3.drivers.number_audios
+
+path = os.path.abspath(__file__)
+parent = os.path.dirname(path)
+number_audios = os.path.join(parent, "number_audios")
 
 # CHUNK = 1024
 
@@ -51,7 +59,7 @@ class Audio:
         # self.audios = self._preload_number_audios()
         self.audios = self._preload_audios()
 
-        with wave.open("number_audios/1.wav", "rb") as wf:
+        with wave.open(f"{number_audios}/1.wav", "rb") as wf:
             # Instantiate PyAudio and initialize PortAudio system resources (1)
             p = pyaudio.PyAudio()
 
@@ -67,13 +75,13 @@ class Audio:
     def _preload_number_audios(self):
         audios = {}
         for i in range(0, 13):
-            filename = f"number_audios/{i}.wav"
+            filename = f"{number_audios}/{i}.wav"
             audios[str(i)] = self._preload_audio(filename)
         return audios
 
     def _preload_audios(self):
         audios = {}
-        directory = "number_audios"
+        directory = number_audios
         for filename in os.listdir(directory):
             if filename.endswith(".wav"):
                 key = ".".join(filename.split(".")[:-1])

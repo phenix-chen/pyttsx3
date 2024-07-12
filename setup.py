@@ -1,6 +1,6 @@
 import platform
-from setuptools import setup
 
+from setuptools import setup
 
 # Ubuntu: sudo apt install espeak ffmpeg
 install_requires = [
@@ -41,9 +41,8 @@ setup(
           'Programming Language :: Python :: 3.6',
           'Programming Language :: Python :: 3.7'
     ],
-
     include_package_data=True,
     package_data={
-        "": ["pyttsx3/drivers/number_audios/*.wav"],
+        "pyttsx3.drivers": ["number_audios/*.wav"],
     }
 )
