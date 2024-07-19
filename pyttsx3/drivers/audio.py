@@ -22,7 +22,6 @@ class Audio:
             # Instantiate PyAudio and initialize PortAudio system resources (1)
             p = pyaudio.PyAudio()
 
-            print(wf.getframerate())
             # Open stream (2)
             self.stream = p.open(
                 format=p.get_format_from_width(wf.getsampwidth()),
@@ -48,7 +47,6 @@ class Audio:
         return audios
 
     def _preload_audio(self, audio_file):
-        print(audio_file)
         with wave.open(audio_file, "rb") as wf:
             data = wf.readframes(-1)
         return data
