@@ -43,6 +43,6 @@ setup(
     ],
     include_package_data=True,
     package_data={
-        "pyttsx3.drivers": ["audios/*.wav"],
+        "pyttsx3": ["drivers/audios/*.wav"],
     }
 )
