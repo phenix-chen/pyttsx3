@@ -42,6 +42,7 @@ setup(
           'Programming Language :: Python :: 3.7'
     ],
     include_package_data=True,
+    package_dir={"pyttsx3": "pyttsx3"},
     package_data={
         "pyttsx3": ["drivers/audios/*.wav"],
     }
