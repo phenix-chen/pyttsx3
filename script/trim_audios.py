@@ -79,6 +79,9 @@ def process_audio_file(input_file, output_dir):
         return
 
     print(f"Trimming {input_file} to {output_file}")
+    if os.path.exists(output_file):
+        print(f"File {output_file} already exists. Skipping.")
+        return
     subprocess.run(
         [
             "ffmpeg",
